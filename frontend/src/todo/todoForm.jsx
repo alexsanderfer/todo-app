@@ -5,19 +5,24 @@ import IconButton from "../template/iconButton";
 export default props => {
 
     const keyHandler = (e) => {
-      if (e.key === 'Enter') {
-          e.shiftKey ? props.handleSearch() : props.handleAdd()
-      } else if (e.key === 'Escape') {
-          props.handleClear()
-      }
+        if (e.key === 'Enter') {
+            e.shiftKey ? props.handleSearch() : props.handleAdd()
+        } else if (e.key === 'Escape') {
+            props.handleClear()
+        }
     }
 
     return (
         <div role='form' className='todoForm'>
             <Grid cols='12 9 10'>
                 <input id='description' className='form-control'
-                       placeholder='Adicione uma tarefa' onKeyUp={keyHandler}
+                       placeholder='Adicione ou pesquise uma tarefa...' onKeyUp={keyHandler}
                        onChange={props.handleChange} value={props.description}/>
+                <small>
+                    Use os atalhos: <strong>Enter</strong> para adicionar uma tarefa,
+                    <strong> Shift+Enter</strong> para pesquisar e <strong>Esc</strong> para
+                    apagar.
+                </small>
             </Grid>
 
             <Grid cols="12 3 2">
